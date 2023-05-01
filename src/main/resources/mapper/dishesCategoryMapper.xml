@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 与哪个接口对应-->
+<mapper namespace="com.example.opoproject.mapper.dishesCategoryMapper">
+    <insert id="saveDishesCategory" parameterType="dishesCategory">
+    insert into dishescategory(dishesCategoryName,dishesCategoryDescription,dishesCategoryStatus)
+        values(#{dishesCategoryName},#{dishesCategoryDescription},#{dishesCategoryStatus})
+</insert>
+    <delete id="deleteDishesCategoryOrDishesCategorys" parameterType="list">
+        delete from dishescategory where dishesCategoryId in <foreach collection="list" item="id" open="(" close=")" separator=",">
+                                   #{id}
+    </foreach>
+    </delete>
+    <update id="updateDishesCategory" parameterType="dishesCategory">
+        update dishescategory
+    <set>
+        <if test="dishesCategoryName!=null and dishesCategoryName!=''">
+            dishesCategoryName=#{dishesCategoryName},
+        </if>
+        <if test="dishesCategoryDescription!=null and dishesCategoryDescription!=''">
+            dishesCategoryDescription=#{dishesCategoryDescription},
+        </if>
+        <if test="dishesCategoryStatus!=null and dishesCategoryStatus!=''">
+            dishesCategoryStatus=#{dishesCategoryStatus},
+        </if>
+    </set>
+            where dishesCategoryId=#{dishesCategoryId}
+    </update>
+    <select id="getDishesCategoryByid" parameterType="long" resultType="dishesCategory">
+        select * from dishescategory where dishesCategoryId=#{id}
+    </select>
+</mapper>
