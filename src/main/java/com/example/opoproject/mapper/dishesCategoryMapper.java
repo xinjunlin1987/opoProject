@@ -4,6 +4,7 @@ import com.example.opoproject.pojo.dishesCategory;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //@Mapper
 public interface dishesCategoryMapper {
@@ -19,7 +20,7 @@ public interface dishesCategoryMapper {
      * @param dishesCategoryIds
      * @return
      */
-    public int deleteDishesCategoryOrDishesCategorys(ArrayList<Long> dishesCategoryIds);
+    public int deleteDishesCategoryOrDishesCategorys(List<Long> dishesCategoryIds);
 
     /**
      * 修改一个DishesCategory的信息
@@ -34,4 +35,10 @@ public interface dishesCategoryMapper {
      * @return
      */
     public dishesCategory getDishesCategoryByid(@Param("id") Long id);
+
+    /**
+     * 获取所有的菜单信息
+     * @return
+     */
+    public List<dishesCategory> getAllDishesCategorys();
 }

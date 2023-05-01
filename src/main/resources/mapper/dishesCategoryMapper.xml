@@ -8,7 +8,7 @@
     insert into dishescategory(dishesCategoryName,dishesCategoryDescription,dishesCategoryStatus)
         values(#{dishesCategoryName},#{dishesCategoryDescription},#{dishesCategoryStatus})
 </insert>
-    <delete id="deleteDishesCategoryOrDishesCategorys" parameterType="list">
+    <delete id="deleteDishesCategoryOrDishesCategorys" parameterType="List">
         delete from dishescategory where dishesCategoryId in <foreach collection="list" item="id" open="(" close=")" separator=",">
                                    #{id}
     </foreach>
@@ -30,5 +30,8 @@
     </update>
     <select id="getDishesCategoryByid" parameterType="long" resultType="dishesCategory">
         select * from dishescategory where dishesCategoryId=#{id}
+    </select>
+    <select id="getAllDishesCategorys" resultType="dishesCategory">
+        select * from dishescategory
     </select>
 </mapper>
