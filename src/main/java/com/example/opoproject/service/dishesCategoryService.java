@@ -39,5 +39,5 @@ public interface dishesCategoryService {
      * 获取所有的菜单信息
      * @return
      */
-    public resultUtil getDishesCategorysBylimt(int pageNum,int pageSize);
+    public resultUtil getDishesCategorysBylimt(int pageNum,int pageSize,String dishesCategoryName);
 }

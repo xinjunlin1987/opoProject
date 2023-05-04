@@ -37,8 +37,9 @@ public interface dishesCategoryMapper {
     public dishesCategory getDishesCategoryByid(@Param("id") Long id);
 
     /**
-     * 获取所有的菜单信息
+     *
+     * @param dishesCategoryName
      * @return
      */
-    public List<dishesCategory> getAllDishesCategorys();
+    public List<dishesCategory> getAllDishesCategorys(@Param("dishesCategoryName") String dishesCategoryName);
 }

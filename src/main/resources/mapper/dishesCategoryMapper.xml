@@ -31,7 +31,12 @@
     <select id="getDishesCategoryByid" parameterType="long" resultType="dishesCategory">
         select * from dishescategory where dishesCategoryId=#{id}
     </select>
-    <select id="getAllDishesCategorys" resultType="dishesCategory">
+    <select id="getAllDishesCategorys" parameterType="string" resultType="dishesCategory">
         select * from dishescategory
+        <where>
+          <if test="dishesCategoryName!=null and dishesCategoryName!=''">
+              dishesCategoryName  like   '%${dishesCategoryName}%'
+          </if>
+        </where>
     </select>
 </mapper>

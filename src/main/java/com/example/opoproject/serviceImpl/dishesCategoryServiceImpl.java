@@ -6,18 +6,15 @@ import com.example.opoproject.pojo.dishesCategory;
 import com.example.opoproject.service.dishesCategoryService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 @Service
 public class dishesCategoryServiceImpl implements dishesCategoryService {
     @Resource
     dishesCategoryMapper dishesCategoryMapper;
-
     @Override
     public resultUtil saveDishesCategory(dishesCategory dishesCategory) {
         Integer i = dishesCategoryMapper.saveDishesCategory(dishesCategory);
@@ -47,9 +44,9 @@ public class dishesCategoryServiceImpl implements dishesCategoryService {
     }
 
     @Override
-    public resultUtil<PageInfo<dishesCategory>> getDishesCategorysBylimt(int pageNum,int pageSize) {
+    public resultUtil<PageInfo<dishesCategory>> getDishesCategorysBylimt(int pageNum,int pageSize,String dishesCategoryName) {
         PageHelper.startPage(pageNum,pageSize);
-        List<dishesCategory> allDishesCategorys = dishesCategoryMapper.getAllDishesCategorys();
+        List<dishesCategory> allDishesCategorys = dishesCategoryMapper.getAllDishesCategorys(dishesCategoryName);
         PageInfo<dishesCategory> pageInfo = new PageInfo<>(allDishesCategorys);
         if (StringUtils.isEmpty(allDishesCategorys)) {
             return  new resultUtil<>(500,"没有数据",null);

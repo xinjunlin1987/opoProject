@@ -3,7 +3,7 @@ package com.example.opoproject.controller;
 import com.example.opoproject.Util.resultUtil;
 import com.example.opoproject.pojo.dishesCategory;
 import com.example.opoproject.service.dishesCategoryService;
-import com.github.pagehelper.PageInfo;
+import com.sun.prism.null3d.NULL3DPipeline;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +34,9 @@ public class dishesCategoryContorller {
       return    dishesCategoryService.getDishesCategoryByid(id);
     }
     @GetMapping("/dishesCategory/getDishesCategoryByLimit")
-    public resultUtil<PageInfo<dishesCategory>>  getDishesCategorysBylimt(@RequestParam("pageNum") int pageNum,
-                                                                          @RequestParam("pageSize") int pageSize){
-        return dishesCategoryService.getDishesCategorysBylimt(pageNum,pageSize);
+    public resultUtil<List<dishesCategory>> getDishesCategorysBylimt(@RequestParam("pageNum") int pageNum,
+                                                                     @RequestParam("pageSize") int pageSize,
+                                                                     @RequestParam(value = "dishesCategoryName",defaultValue = "") String dishesCategoryName){
+        return dishesCategoryService.getDishesCategorysBylimt(pageNum,pageSize,dishesCategoryName);
     }
 }
