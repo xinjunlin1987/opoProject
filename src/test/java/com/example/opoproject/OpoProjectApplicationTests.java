@@ -48,14 +48,15 @@ class OpoProjectApplicationTests {
         System.out.println(dishesCategoryByid.toString());
     }
     @Test
-    void getAllDishescategory(){
-        PageHelper.startPage(1,3);
-        List<dishesCategory> list = dishesCategoryMapper.getAllDishesCategorys();
-        PageInfo<dishesCategory> info = new PageInfo<>(list);
-        System.out.println(info);
-    }
-    @Test
     void test(){
         System.out.println(dishesCategory.toString());
+    }
+    @Test
+    void getAllCountbyDcondition(){
+        dishesCategory dishesCategory1 = new dishesCategory();
+        dishesCategory1.setDishesCategoryName("123");
+        dishesCategory1.setDishesCategoryDescription("12313");
+        int allCountByDcondition = dishesCategoryMapper.getAllCountByDcondition(dishesCategory1);
+        System.out.println(allCountByDcondition);
     }
 }

@@ -39,4 +39,18 @@
           </if>
         </where>
     </select>
+    <select id="getAllCountByDcondition" parameterType="dishesCategory" resultType="int">
+        select count(*) from dishescategory
+        <where >
+            <if test="dishesCategoryName!=null and dishesCategoryName!=''">
+                and dishesCategoryName like  '%${dishesCategoryName}%'
+            </if>
+            <if test="dishesCategoryDescription!=null and dishesCategoryDescription!=''">
+                and dishesCategoryDescription like '%${dishesCategoryDescription}%'
+            </if>
+            <if test="dishesCategoryStatus!=null and dishesCategoryStatus!=''">
+                and dishesCategoryStatus=#{dishesCategoryStatus}
+            </if>
+        </where>
+    </select>
 </mapper>

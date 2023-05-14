@@ -29,14 +29,14 @@ public class dishesCategoryContorller {
     public resultUtil updateDishesCategory(@RequestBody dishesCategory dishesCategory){
         return dishesCategoryService.updateDishesCategory(dishesCategory);
     }
-        @GetMapping("/dishesCategory/getDishesCategoryById/{id}")
+    @GetMapping("/dishesCategory/getDishesCategoryById/{id}")
     public resultUtil<dishesCategory> getDishesCategoryByid(@PathVariable("id") Long id) {
       return    dishesCategoryService.getDishesCategoryByid(id);
     }
     @GetMapping("/dishesCategory/getDishesCategoryByLimit")
     public resultUtil<List<dishesCategory>> getDishesCategorysBylimt(@RequestParam("pageNum") int pageNum,
                                                                      @RequestParam("pageSize") int pageSize,
-                                                                     @RequestParam(value = "dishesCategoryName",defaultValue = "") String dishesCategoryName){
+                                                                     @RequestParam(value = "dishesCategoryName",defaultValue = "",required = false) String dishesCategoryName){
         return dishesCategoryService.getDishesCategorysBylimt(pageNum,pageSize,dishesCategoryName);
     }
 }

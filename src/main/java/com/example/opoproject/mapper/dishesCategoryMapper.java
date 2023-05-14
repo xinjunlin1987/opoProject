@@ -37,9 +37,16 @@ public interface dishesCategoryMapper {
     public dishesCategory getDishesCategoryByid(@Param("id") Long id);
 
     /**
-     *
+     *根据dishesCategoryName条件模糊查询所有的dishesCtategory。
      * @param dishesCategoryName
      * @return
      */
     public List<dishesCategory> getAllDishesCategorys(@Param("dishesCategoryName") String dishesCategoryName);
+
+    /**
+     * 根据动态条件查询总记录数目。
+     * @param dishesCategory
+     * @return
+     */
+    public  int getAllCountByDcondition(dishesCategory dishesCategory);
 }
